@@ -1,35 +1,7 @@
 const http = require("http");
-const fs = require("fs");
+const routes = require('./routes')
 
-const requestListener = (req, res) => {
-  const url = req.url;
-  console.log(url);
-  if (url === "/") {
-    // set response headers
-    res.setHeader("Content-Type", "text/html");
-
-    res.write(
-      "<body><form method='POST' action='/message' > <input name='message' type='text'> <button type='submit'>Send</button> </form> </body>"
-    );
-    return res.end();
-    ///  /message
-  } else if (url === "/message" && req.method === "POST") {
-    const chunks = [];
-    req.on("error", (error) => {
-      console.log(error);
-    });
-    req.on("data", (chunk) => {
-      chunks.push(chunk);
-    });
-    req.on("end", (data) => {
-      const message = Buffer.concat(chunks).toString().split("=")[1];
-      fs.writeFileSync("messages.txt", message);
-      res.statusCode = 302;
-      res.setHeader("Location", "/");
-      return res.end();
-    });
-  }
-};
+const requestListener = routes;
 
 const server = http.createServer(requestListener);
 
