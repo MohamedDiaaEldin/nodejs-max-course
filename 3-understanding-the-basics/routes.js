@@ -22,7 +22,7 @@ const requestHandler = (req, res) => {
     req.on("end", (data) => {
       const message = Buffer.concat(chunks).toString().split("=")[1];
       //   fs.writeFileSync("messages.txt", message);
-      fs.writeFile("messages.txt", message, (error) => {
+      fs.writeFile("./messages.txt", message, (error) => {
         if (error) {
           console.log("error", error);          
           res.write("server error");

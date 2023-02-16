@@ -9,11 +9,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "nodemon",
+            "name": "node",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/3-understanding-the-basics/app.js",
+            "program": "${workspaceFolder}/5-working-with-express/app.js",
             "runtimeExecutable": "/home/mohamed/.nvm/versions/node/v16.14.2/bin/node",
             "restart": true, 
             "console": "integratedTerminal",             
